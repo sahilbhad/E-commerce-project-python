@@ -1,0 +1,93 @@
+{% include 'main.html'%}
+
+
+{% block content %}
+ 
+
+ 
+   
+<nav class="secondary-nav">
+   <ul>
+    <li><a href="{% url 'home' %}">All</a></li> 
+    <form>
+    <li><input type="submit" class="bb" name="trending" value="TRENDING"></li>
+</form>
+<form>
+    <li><input type="submit" class="bb" name="offer" value="OFFER"></li>
+</form>
+        {% for i in categories_list %}
+        <form>
+        <li><input type="submit" class="bb"  name="cat" value="{{i}}"></li>
+    
+        </form>
+        {% endfor %}
+
+
+        <form  class="search-bar">
+            <input type="text" class="a" name="q" placeholder="Search...">
+            <input class="button" type="submit">
+          </form>
+
+          
+        </ul>
+</nav> 
+
+
+
+
+<section class="product-grid">
+    {% for i in page_obj %}
+    <div class="product-card">
+
+
+        
+        {% if i.t %}
+         <h3>"Trending"</h3>
+        {% endif %}
+
+        {% if i.o %}
+        <h3>"50% Off.."</h3>
+        {% endif %}
+
+        
+        <h3>{{i.category}}</h3>
+        <img src="{{ i.image.url }}" alt="" height="200px" width="200px">
+        <h3>{{i.name}}</h3>
+        <h3>{{i.desc}}</h3>
+        <p class="price">PRICE :-{{i.price}}</p>
+        <a href="{% url 'addtocart' i.id %}" class="buy-btn">
+            Add To Cart
+        </a>
+    </div>
+    {% endfor %}
+
+
+    {% if not_match%}
+
+       <h1>Not Match Found...x </h1>
+    {% endif %}
+
+
+
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">First</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+        {% endif %}
+    </span>
+</div>
+</section>
+
+{% endblock content %}

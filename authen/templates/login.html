@@ -1,0 +1,45 @@
+{% extends 'main.html'%}
+
+
+
+{% block content %}
+<div class="reg-container">
+    <div class="reg-box">
+
+        <div class="logo">
+            <h1 >ShopZone</h1>
+       </div>
+       <h2>Sign-In</h2>
+
+
+       {% if wrong_credentials  %}
+        <center>       
+       <h5 style="color: red;">Wrong password </h5>
+        </center>  
+       {% endif %}
+
+
+ 
+
+
+
+    <form action="" class="rrr" method="POST">
+        {% csrf_token %}
+
+ 
+        <label for="">Username</label>
+        <input type="text" name="uname" placeholder="Enter Username">
+
+        <label for="">Password</label>
+        <input type="password" name="password" placeholder="Enter password">
+         <br>
+        <button type="submit" class="reg-btn">Submit</button>
+        <p>Not Login Can Register..<a href="{% url 'register'%}" class="user">Register</a></p>
+        <br>
+        <!-- <a href="" class="user">Forget Password</a> -->
+    </form>
+
+<div>
+
+</div>
+{% endblock content %}

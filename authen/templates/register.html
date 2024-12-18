@@ -1,0 +1,39 @@
+{% extends 'main.html'%}
+
+
+
+{% block content %}
+<div class="reg-container">
+    <div class="reg-box">
+
+        <div class="logo">
+            <h1 >ShopZone</h1>
+       </div>
+       <h2>Sign-Up</h2>
+    <form action="" class="rrr" method="POST">
+        {% csrf_token %}
+
+        <label for="">FristName</label>
+        <input type="text" name="fname" placeholder=" Enter FristName">
+          
+        <label for="">LastName</label>
+        <input type="text" name="lname" placeholder="Enter LastName">
+
+        <label for="">Email</label>
+        <input type="text" name="email" placeholder=" Enter Email">
+
+        <label for="">Username</label>
+        <input type="text" name="uname" placeholder="Enter Username">
+
+        <label for="">Password</label>
+        <input type="password" name="password" placeholder="Enter password">
+         <br>
+        <button type="submit" class="reg-btn">Submit</button>
+
+        <p>If Register? <a href="{% url 'login' %}" class="user">Login Here</a></p>
+    </form>
+
+<div>
+
+</div>
+{% endblock content %}

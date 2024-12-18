@@ -1,0 +1,72 @@
+{% include 'main.html'%}
+
+
+{% block content %}
+ 
+
+<center>
+    <h2>cart</h2>
+
+
+    <!-- <a href="{% url 'home' %}">Shoping</a>  -->
+
+    <div class="cart-container">
+        <table border="0px" class="cart-table">
+           
+                  <thead>
+                    <tr>
+                    <th>Category</th>
+                    <th>Name</th>
+                    <th>image</th>
+                    <th>Price</th>
+                    <th>Quatity</th>
+                    <th>Total Price</th>
+                    <th>Remove</th>
+                </tr>
+                </thead>
+          <tbody>
+            {% for i in a %}
+                <tr>
+          
+              
+                 <td>{{i.category}}</td>
+                <td>{{i.name}}</td>
+                <td><img src="{{i.image.url}}" alt="" height="70px;" width="70px;"></td>
+
+                <td>{{i.price}}</td>
+               
+                <td>
+                  <a href="{% url 'decrease_quantity' i.id %}">-</a>
+                  {{i.q}}
+                
+                <a href="{% url 'increase_quantity' i.id %}">+</a>
+              </td>
+                <td>{{i.total_p}}</td>
+                <td><a href="{% url 'remove' i.id %}">Remove</a> </td>
+               </tr>
+               {% empty %}
+               <tr>
+                   <td colspan="6">No data found</td>
+               </tr>
+               {% endfor %}
+            
+              </tbody>
+               </table>
+
+               
+     
+               <div class="total-section" style="color: red;">
+                Grand Total:{{total_a}}
+              </div>
+           
+              <div style="text-align: center;">
+                <a href="{% url 'checkout_'%}" class="checkout-btn">Proceed to Checkout</a>
+                <a href="{% url 'home' %}" style="margin-left: 45%; color: gray;">Continue Shoping</a>
+              </div>
+              
+    
+ </div>
+ 
+</center>
+ 
+{% endblock content %}

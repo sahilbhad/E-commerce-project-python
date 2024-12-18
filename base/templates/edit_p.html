@@ -1,0 +1,41 @@
+{% extends 'main.html'%}
+
+
+
+{% block content %}
+<div class="reg-container">
+    <div class="reg-box">
+
+        <div class="logo">
+            <h1 >ShopZone</h1>
+       </div>
+       <h2>Edit Profile</h2>
+    <form action="" class="rrr" method="POST">
+        {% csrf_token %}
+
+        <label for="">FristName</label>
+        <input type="text" name="fname" required value="{{a.first_name}}">
+          
+        <label for="">LastName</label>
+        <input type="text" name="lname" required value="{{a.last_name}}">
+
+        <label for="">Email</label>
+        <input type="text" name="email"  required value="{{a.email}}">
+
+        <label for="">Username</label>
+        <input type="text" name="uname"  required value="{{a.username}}">
+
+
+        <label for="">Password</label>
+        <input type="text" name="Password"  required value="{{a.password}}">
+
+         
+        <button type="submit" class="reg-btn">Submit</button>
+
+        <p> <a href="{% url 'profile' %}" class="user">Back</a></p>
+    </form>
+
+<div>
+
+</div>
+{% endblock content %}

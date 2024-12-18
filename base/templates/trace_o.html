@@ -1,0 +1,64 @@
+{% include 'main.html'%}
+
+
+{% block content %}
+ 
+
+<center>
+    <h2>cart</h2>
+
+
+    <!-- <a href="{% url 'home' %}">Shoping</a>  -->
+  <h2>Trace  order......</h2>
+    <div class="cart-container">
+        <table border="2px" class="cart-table">
+           
+                  <thead>
+                    <tr>
+                
+                        <thead>
+                            <tr>
+                            <th>Category</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quatity</th>
+                            <th>Total Price</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                  
+                </tr>
+                </thead>
+          <tbody>
+            {% for i in orders %}
+            <tr>
+              <tr>
+                <td>{{i.category}}</td>
+                <td>{{ i.name}}</td>
+                <td>{{ i.price }}</td> 
+                <td>{{ i.q }}</td>
+                <td>{{ i.total_p }}</td>
+                <td>{{ i.status }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="6">No data found</td>
+            </tr>
+        {% endfor %} 
+              </tbody>
+               </table>
+
+               
+     
+             
+              
+    
+ </div> 
+</br>
+
+    <a href="{% url 'home'%}">Continue Shoping</a>
+</br>
+ 
+</center>
+ 
+{% endblock content %}

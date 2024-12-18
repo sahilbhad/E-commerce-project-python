@@ -1,0 +1,88 @@
+<header>
+    <div class="navbar">
+        <div class="logo">
+
+            <a href="">ShopZone</a>
+        </div>
+       
+        <button class="toggle-menu">☰</button>
+        <div class="nav-links">
+           
+     {% if request.user.is_authenticated %}
+
+      
+        <form class="nvr">
+            <!-- <a> <input type="submit" class="f"  value="Trending" name="trending"></a> -->
+   
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'profile' %}">Profile({{request.user}})</a>
+            <a href="{% url 'support' %}">Support</a>
+            <a href="{% url 'knowus' %}">Knowas</a>
+            <a href="{% url 'cart' %}">Cart({{count_ }})</a>
+            <a href="{% url 'logout'%}">Logout</a>
+        </form>
+        {% else %}
+
+
+            {% if login_nav %}
+            
+                 <a href="{% url 'home' %}">Home</a>
+               
+                 <a href="{% url 'support' %}">Support</a>
+                 <a href="{% url 'knowus' %}">Knowas</a>
+                 <a href="{% url 'register' %}">Register</a>
+           
+                 <a href="{% url 'login' %}">Login</a>
+
+
+               {% else %}
+            
+               <form  class="search-bar">
+                <input type="text" class="a" name="q" placeholder="Search...">
+                <input class="button" type="submit">
+              
+                    <form>
+                        <!-- <a><input type="submit" class="ttt" name="trending" value="Trending">  </a> -->
+                        <a href="{% url 'home' %}">Home</a>
+                    
+                    <a href="{% url 'support' %}">Support</a>
+                    <a href="{% url 'knowus' %}">Knowas</a>
+                    <a href="{% url 'cart' %}">Cart({{count_ }})</a>
+                    <a href="{% url 'register' %}">Register</a>
+                    <a href="{% url 'login' %}">Login</a>
+                </form>
+                </form>
+            
+
+            {% endif %}
+
+             
+          
+
+        {% endif %}
+        </div>
+
+     
+    
+    </div>
+
+
+
+    
+     
+ 
+             
+</header>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggleMenuButton = document.querySelector(".toggle-menu");
+        const navLinks = document.querySelector(".nav-links");
+
+        toggleMenuButton.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+    });
+</script>
+
+ 

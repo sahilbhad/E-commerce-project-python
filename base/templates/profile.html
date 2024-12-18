@@ -1,0 +1,43 @@
+{% extends 'main.html'%}
+
+
+
+{% block content %}
+<div class="body">
+<div class="container">
+    
+ 
+    <header class="header">
+        
+      <h1>Your Profile</h1>
+    </header>
+   
+    <section class="profile">
+     
+      <div class="profile-info">
+        <h2>{{user.username}}</h2>
+        <p>FristName:{{user.first_name}}</p>
+        <p>LastName:{{user.last_name}}</p>
+        <p>Email:{{user.email}}</p>
+        <p style="color:darkblue;">Password:{{user.password}}</p>
+       </div>
+       
+    </section>
+
+    <section class="account-overview">
+         <div class="account-box"> 
+        <a href="{% url 'e_p' user.id %}">EditProfile</a>
+  
+        <a href="{%  url 'delete_p' user.id %}">Remove</a>
+
+
+        <a href="{% url 'trace_o'%}">Trace order</a>
+    </div>
+      </section>
+      </div>
+    
+    
+    
+</div>
+
+{% endblock content %}
